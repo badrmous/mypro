@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="modal-content modal-xxl">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    </div>
+    <div class="modal-body">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef> Nom </th>
+          <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef> Prenom </th>
+          <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="date_naissance">
+          <th mat-header-cell *matHeaderCellDef> DateNaissance </th>
+          <td mat-cell *matCellDef="let element"> {{element.dateNaissance}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <a  class="btn btn-icon btn-sm btn-outline-primary kt-mr-10" data-placement="top" matTooltip="details"><i class="far fa-eye"></i></a>
+            <a  class="btn btn-icon btn-sm btn-outline-warning kt-mr-10" matTooltip="modifier"><i class="fas fa-pen"></i></a>
+            <a  class="btn btn-icon btn-sm btn-outline-danger kt-mr-10" matTooltip="supprimer"><i class="fas fa-trash"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="width-90"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
